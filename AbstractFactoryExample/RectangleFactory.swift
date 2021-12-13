@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Rectangle Factory
 class RectangleFactory: ShapeFactory {
     
     func createGreenShape() -> ShapeDescription {

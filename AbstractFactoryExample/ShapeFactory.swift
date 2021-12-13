@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-
+// Abstract Factory protocol
 protocol ShapeFactory {
     func createGreenShape() -> ShapeDescription
     func createBlueShape() -> ShapeDescription

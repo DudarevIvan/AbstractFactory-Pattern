@@ -10,28 +10,28 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var viewModel: ViewModel = .init()
-    @State private var shapeType: String = ""
+    @State private var shapeType: ShapeType = .circle
     
     var body: some View {
         VStack {
             Button {
                 viewModel.circleFactory()
-                shapeType = "Circle"
+                shapeType = .circle
             } label: {
                 Text("Circle Factory")
             }
                 .padding()
             Button {
                 viewModel.rectangleFactory()
-                shapeType = "Rectangle"
+                shapeType = .rectangle
             } label: {
                 Text("Rectangle Factory")
             }
                 .padding()
             Spacer(minLength: 0)
-            ForEach(shapeType == "Circle" ? viewModel.circle : viewModel.rectangle, id: \.self.title) { shape in
+            ForEach(shapeType == .circle ? viewModel.circle : viewModel.rectangle, id: \.self.title) { shape in
                 ZStack {
-                    if shapeType == "Circle" {
+                    if shapeType == .circle {
                         Circle()
                             .stroke(lineWidth: 2)
                     } else  {
@@ -54,6 +54,11 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+
+enum ShapeType {
+    case circle
+    case rectangle
+}
 
 
 struct CircleShape: View {
